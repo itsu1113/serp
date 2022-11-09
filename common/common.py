@@ -32,6 +32,9 @@ import urllib.request
 import urllib.parse
 import pprint
 from selenium import webdriver
+import keepa
+from settings import *
+
 def get_driver():
     driver_path="C:\\Users\\ItsukiSato\\Documents\\20_TOOL\\chromedriver.exe"
     # 起動時にオプションをつける。（ポート指定により、起動済みのブラウザのドライバーを取得）
