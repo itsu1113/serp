@@ -15,7 +15,7 @@ def task_yahoo_run():
     cate_list=get_cate_list()
 
     # 一覧のaタグのclass_name
-    class_name="b_n-vCRpYoNs"
+    class_name="INxDYHitOXlv"
 
     fieldnames=[]
     is_first=True

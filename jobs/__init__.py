@@ -9,6 +9,7 @@ from jobs.task_edion import task_edion_run
 from jobs.task_check_exhibit import task_check_exhibit_run
 from jobs.task_get_arari import task_get_arari_run
 from jobs.task_rakuten_keyword import task_rakuten_keyword_run
+from jobs.task_ipo import task_ipo_run
 
 # グループを作成
 job = AppGroup('job')
@@ -24,3 +25,4 @@ job.add_command(task_edion_run)
 job.add_command(task_check_exhibit_run)
 job.add_command(task_get_arari_run)
 job.add_command(task_rakuten_keyword_run)
+job.add_command(task_ipo_run)
