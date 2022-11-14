@@ -34,6 +34,8 @@ import pprint
 from selenium import webdriver
 import keepa
 from settings import *
+from datetime import timedelta
+import jpholiday
 
 def get_driver():
     driver_path="C:\\Users\\ItsukiSato\\Documents\\20_TOOL\\chromedriver.exe"
@@ -462,5 +464,29 @@ def get_fee(asin):
         print(e)
         return 0
 
+# ７日後を取得
+def get_lottery_date(entry_date):
+    
+    lottery_date=entry_date + timedelta(days=7)
 
+    while isBizDay(lottery_date)==0:
+        lottery_date+=timedelta(days=1)
+    
+    return lottery_date
+
+# ２営業日前を取得
+def get_entry_date(end_date):
+    cnt_weekday=0
+    while cnt_weekday<2:
+        end_date-=timedelta(days=1)
+        if isBizDay(end_date)==1:
+            cnt_weekday+=1
+    return end_date
+
+# 平日の場合には1を返す
+def isBizDay(DATE):
+    if DATE.weekday() >= 5 or jpholiday.is_holiday(DATE):
+        return 0
+    else:
+        return 1
 
