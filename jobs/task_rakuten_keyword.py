@@ -98,7 +98,7 @@ def open_tab(items, driver):
             tab_idx=tab_idx+1
             # if tab_idx==5:
             #     break #test
-            time.sleep(20)#アクセス制限対策
+            time.sleep(30)#アクセス制限対策
         except Exception as e:
             print('Exception:'+'open_tab')
             print(e)
