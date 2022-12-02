@@ -13,6 +13,7 @@ from jobs.task_ipo import task_ipo_run
 from jobs.task_tracking import task_tracking_run
 from jobs.task_orenor import task_orenor_run
 from jobs.task_make_delivery import task_make_delivery_run
+from jobs.task_hikari import task_hikari_run
 
 # グループを作成
 job = AppGroup('job')
@@ -32,3 +33,4 @@ job.add_command(task_ipo_run)
 job.add_command(task_tracking_run)
 job.add_command(task_orenor_run)
 job.add_command(task_make_delivery_run)
+job.add_command(task_hikari_run)
