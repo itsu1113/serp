@@ -79,7 +79,8 @@ def chek_approved(driver, result_list):
             
             if driver.title == 'Server Busy':
                 logger.debug('Server Busy '+ result['asin'])
-                driver.quit()
+                time.sleep(1800)
+                # driver.quit()
 
             # 出品できるか　できない場合はexception
             check=driver.find_element(By.ID,'reconcile-item-title').get_attribute("innerHTML")
