@@ -79,6 +79,7 @@ def chek_approved(driver, result_list):
             
             if driver.title == 'Server Busy':
                 logger.debug('Server Busy '+ result['asin'])
+                print('Server Busy '+ result['asin'])
                 time.sleep(1800)
                 # driver.quit()
 
