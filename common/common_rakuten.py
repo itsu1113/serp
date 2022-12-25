@@ -47,6 +47,53 @@ def get_basic_point(driver):
                             point=int(point)-1
                             return point
                         except Exception as e:
-                            return 0
+                            #楽天ビック
+                            try:
+                                point=driver.find_element(By.CSS_SELECTOR, "#item > div > div.p-productDetailv2__mainRight > div:nth-child(6) > div > div > div > ul.point-summary__campaign___2KiT-.point-summary__rebate___OwnwU > li:nth-child(2)").get_attribute('innerHTML')
+                                point=point.replace("%ポイントバック", "")
+                                point=int(point)-1
+                                return point
+                            except Exception as e:
+                                #楽天ビック
+                                try:
+                                    point=driver.find_element(By.CSS_SELECTOR, "#item > div > div.p-productDetailv2__mainRight > div:nth-child(7) > div > div > div > ul.point-summary__campaign___2KiT-.point-summary__rebate___OwnwU > li:nth-child(2)").get_attribute('innerHTML')
+                                    point=point.replace("%ポイントバック", "")
+                                    point=int(point)-1
+                                    return point
+                                except Exception as e:
+                                    #楽天ビック
+                                    try:
+                                        point=driver.find_element(By.CSS_SELECTOR, "#item > div > div.p-productDetailv2__mainRight > div:nth-child(8) > div > div > div > ul.point-summary__campaign___2KiT-.point-summary__multiplier-up___3664l > li:nth-child(2)").get_attribute('innerHTML')
+                                        point=point.replace("倍UP", "")
+                                        return int(point)
+                                    except Exception as e:
+                                        return 0
 
 
+# 価格を取得_楽天
+def get_price(driver):
+    try:
+        return int(driver.find_element(By.ID, "priceCalculationConfig").get_attribute("data-price"))
+    except Exception as e:
+        #楽天ビック
+        try:
+            return int(driver.find_element(By.CLASS_NAME, "p-productDetailv2__priceValue").text.replace("円(税込)", "").replace(",", ""))
+        except Exception as e:
+            #楽天ブックス
+            try:
+                price = driver.find_element(By.CSS_SELECTOR, "#productInfo > div.productInfoArea > p > span.price").get_attribute("content")
+                price = int(price)
+                return price
+            except Exception as e:
+                #楽天ブックス
+                try:
+                    price = driver.find_element(By.CSS_SELECTOR, "#productInfo > div.productInfoArea > p > span:nth-child(6)").get_attribute("content")
+                    price = int(price)
+                    return price
+                except Exception as e:
+                    #楽天ブックス
+                    try:
+                        price = int(driver.find_element(By.ID, "priceCalculationConfig").get_attribute("data-price"))
+                        return price
+                    except Exception as e:
+                        return '-'

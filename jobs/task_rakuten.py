@@ -319,7 +319,7 @@ def get_rakuten(driver, result_list, restrict_urls):
         try:
             driver.switch_to.window(window)
             jan_code             = driver.find_element(By.ID, "rakujan-wrapper").get_attribute('data-rakujan-jan')
-            rakuzon_price        = int(driver.find_element(By.ID, "priceCalculationConfig").get_attribute("data-price"))
+            rakuzon_price        = get_price(driver)
             basic_point          = get_basic_point(driver)
             other_point          = 7
             expecte_point        = rakuzon_price*(basic_point+other_point)/100

@@ -18,7 +18,7 @@ def task_registration_run():
             search_box.send_keys(asin)
             # 検索ボタン
             driver.find_element(By.CSS_SELECTOR, "#content-area > div.content-wrapper > div > div > div.content-area__content > div.fba-apply > div.vx-card.fba-apply-search-bar > div.vx-card__collapsible-content.vs-con-loading__container > div > div.vx-input-group.flex.pb-6.search-group > div.vx-input-group-append.flex.w-full.justify-between > div > button").click()
-            time.sleep(3)
+            time.sleep(4)
             # 出品するボタン
             driver.find_element(By.CSS_SELECTOR, "#content-area > div.content-wrapper > div > div > div.content-area__content > div.fba-apply > div.vuedals > div > div > div.dlg-content > div:nth-child(2) > table > tbody > tr > td.td-btn > div > button > span.vs-button-text.vs-button--text").click()
             time.sleep(5)
