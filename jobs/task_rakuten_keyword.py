@@ -28,7 +28,9 @@ def task_rakuten_keyword_run():
         # 結果リスト
         result_list=list()
         
-        elems = driver.find_elements(By.CSS_SELECTOR, '#root > div.dui-container.main > div.dui-container.content > div.dui-container.searchresults > div')[0].find_elements(By.CSS_SELECTOR, "div.content.title > h2 > a")
+        # elems = driver.find_elements(By.CSS_SELECTOR, '#root > div.dui-container.main > div.dui-container.content > div.dui-container.searchresults > div')[0].find_elements(By.CSS_SELECTOR, "div.content.title > h2 > a")
+        elems = driver.find_elements(By.CSS_SELECTOR, '#root > div.dui-container.main > div.dui-container.content > div:nth-child(3) > div > div')[0].find_elements(By.CSS_SELECTOR, "div.content.title > h2 > a")
+
         # 各商品URLをリスト化
         items = [] 
         for elem in elems:
