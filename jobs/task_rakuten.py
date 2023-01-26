@@ -41,6 +41,7 @@ def task_rakuten_run():
         
         # アクセス制限リストが10件以下になるまで再試行する
         while len(restrict_urls) > 10:
+            time.sleep(60)# test 一分間待機
             print(len(restrict_urls))
             open_tab2(restrict_urls, driver)
             restrict_urls=[]
