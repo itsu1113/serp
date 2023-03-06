@@ -29,17 +29,28 @@ def task_yahoo_run():
             driver=get_driver()
             driver.get(item_list_page)
 
-            shohin_list = driver.find_elements(By.CLASS_NAME, class_name)
+            # shohin_list = driver.find_elements(By.CLASS_NAME, class_name)
+
+            # ページから商品urlを取得しshohin_listへ格納
+            shohin_list = []
+            looplist_items = driver.find_elements(By.CLASS_NAME, 'LoopList__item') 
+            for l in looplist_items:
+                atags = l.find_elements(By.TAG_NAME, "a")
+                for atag in atags:
+                    if atag.get_attribute("target")=='_blank':
+                        shohin_list.append(atag.get_attribute("href"))
+                        break
+
             # 結果リスト
             result_list = []
             cnt=0
             for shohin in shohin_list:
-                result_list.append({'invalid':0, 'category':category, 'item_url':shohin.get_attribute("href")})
+                result_list.append({'invalid':0, 'category':category, 'item_url':shohin})
                 # if cnt==10:
                 #     break
             # 商品情報取得
             get_item(driver, result_list)
-
+            
             # リーファ情報取得
             get_leafer(driver, result_list)
 
@@ -135,6 +146,14 @@ def check_jan(jan_code):
         print(e)
         return False
 
+def get_point_per00():
+    try:
+        point_per=driver.find_elements(By.CLASS_NAME, 'elGetRate')[0].get_attribute('innerHTML').replace('\n', '').replace('%獲得', '').replace(' ', '')
+        point_per=round(float(point_per)*0.01, 3)
+        return point_per
+    except Exception as e:
+        return '-'
+
 def get_point_per0():
     try:
         point_per=driver.find_elements(By.CLASS_NAME, 'elTotalRateText')[0].get_attribute('innerHTML').replace('\n', '').replace('%獲得', '').replace(' ', '')
@@ -178,7 +197,7 @@ def get_item(driver, result_list):
                 if jan_code=='-':
                     result['invalid']=1
                     continue
-
+            
             # jan_code書式チェック
             if check_jan(jan_code):
                 result['jan_code']=jan_code
@@ -188,16 +207,18 @@ def get_item(driver, result_list):
                 continue
                 
             # 獲得ポイント％
-            point_per=get_point_per0()
+            point_per=get_point_per00()
             if point_per=='-':
-                point_per=get_point_per1()
+                point_per=get_point_per0()
                 if point_per=='-':
-                    point_per=get_point_per2()
+                    point_per=get_point_per1()
                     if point_per=='-':
-                        result['jan_code']=9999999999998
-                        result['invalid']=1
-                        continue
-
+                        point_per=get_point_per2()
+                        if point_per=='-':
+                            result['jan_code']=9999999999998
+                            result['invalid']=1
+                            continue
+            print(point_per)
             # 仕入値
             item_price=get_price1()
             if item_price=='-':
