@@ -218,7 +218,7 @@ def get_item(driver, result_list):
                             result['jan_code']=9999999999998
                             result['invalid']=1
                             continue
-            print(point_per)
+                            
             # 仕入値
             item_price=get_price1()
             if item_price=='-':
