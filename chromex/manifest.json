@@ -16,6 +16,12 @@
     ]
   },
   {
+    "matches": ["https://wowma.jp/item/*"],
+    "js": [
+      "aupayma.js"
+    ]
+  },
+  {
     "matches": ["https://store.shopping.yahoo.co.jp/*"],
     "js": [
       "yahoo.js"

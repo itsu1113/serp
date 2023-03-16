@@ -4,14 +4,15 @@
 window.onload = function() {
   try {
     // 通常販売価格
-    var price = document.getElementsByClassName('elPriceNumber')[0].innerHTML.replace(',', '');
-    var point_per = document.getElementsByClassName('elGetRate')[0].innerText.replace('%獲得', '');
-    
+    var price = document.getElementById('js-baseItemPrice').innerHTML.replace(',', '');
+    var point_per = document.querySelector('#js-accordionToggle > li > div > div.uniTriggerItem.js-accordion-trigger.js-item-scroll-trigger > a > span > span:nth-child(2)').innerText;
+    point_per = point_per.replace('\n', '').replace('%', '').replace(' ', '').replace('（', '').replace('）', '');
+
     float_point_per=parseFloat(point_per)*0.01
     var actual_price = parseFloat(price)-(price*float_point_per);
 
     // 表示領域を取得
-    var ItemPrice_element = document.getElementsByClassName('elPriceUnit')[0];
+    var ItemPrice_element = document.getElementsByClassName('priceValue')[0];
 
     // 獲得ポイント％のHTML要素を作成
     var elem_point = document.createElement('div');
