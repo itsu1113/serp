@@ -97,3 +97,19 @@ def get_price(driver):
                         return price
                     except Exception as e:
                         return '-'
+
+# jan_codeを取得_楽天
+def get_jan_code(driver):
+    try:
+        normal_reserve_item_name = driver.find_element(By.CLASS_NAME, 'normal_reserve_item_name') 
+        jan_code=normal_reserve_item_name.find_element(By.XPATH, "//meta[@itemprop='gtin13']").get_attribute('content')
+        return jan_code
+    except Exception as e:
+        try:
+            # 楽JAN
+            jan_code = driver.find_element(By.ID, "rakujan-wrapper").get_attribute('data-rakujan-jan')
+            return jan_code
+        except Exception as e:
+            # print(driver.current_url)
+            raise e
+
