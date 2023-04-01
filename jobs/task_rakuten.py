@@ -80,7 +80,7 @@ def task_rakuten_run():
                         print(result)
                         print(e)
                         continue
-        time.sleep(180)# test アクセス制限対策テスト3分間待機
+        time.sleep(300)# test アクセス制限対策テスト5分間待機
 
 # ランキングコードリストを定義
 def get_rnk_list():
