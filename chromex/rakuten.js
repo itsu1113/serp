@@ -4,18 +4,16 @@
 window.onload = function() {
   try {
     // 通常販売価格
-    var price = document.getElementsByClassName('price2')[0].innerText.replace('円', '').replace(',', '');
+    var price = document.getElementById('priceCalculationConfig').getAttribute("data-price");
     var point_per = parseFloat(get_point_per());
     var spu = 6;
     
     float_point_per = point_per * 0.01;
     float_spu = spu * 0.01;
-    
     var actual_price = parseFloat(price)-(price*(float_point_per+float_spu));
-
     // 表示領域を取得
-    var ItemPrice_element = document.getElementsByClassName('tax_postage')[0];
-
+    var ItemPrice_element = document.getElementById('priceCalculationConfig');
+    
     // spuのHTML要素を作成
     var elem_spu = document.createElement('div');
     elem_spu.textContent = 'SPU：　　　';
