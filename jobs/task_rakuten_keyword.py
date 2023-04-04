@@ -12,8 +12,10 @@ def task_rakuten_keyword_run():
     # アクセス制限URLリスト
     restrict_urls=[]
     fieldnames=[]
+
     # キーワード
-    keyword='楽天ブックス'
+    # keyword='楽天ブックス'
+    keyword='楽天ビック'
     base_url="https://search.rakuten.co.jp/search/mall/"+keyword+"/?p="
 
     # p1-p28までをループする
@@ -42,7 +44,8 @@ def task_rakuten_keyword_run():
 
         # 開いているタブから利益率とURLを取得。結果に反映
         get_rakuten(driver, result_list, restrict_urls)
-
+        # print(result_list)
+        
         # 開いているタブが１つになるまで閉じる
         close_tab(driver)
         
@@ -99,7 +102,7 @@ def open_tab(items, driver):
             driver.execute_script("window.open('https://www.google.com');")
             time.sleep(2)
             tab_idx=tab_idx+1
-            # if tab_idx==5:
+            # if tab_idx==3:
             #     break #test
             time.sleep(28)#アクセス制限対策
         except Exception as e:
@@ -107,30 +110,12 @@ def open_tab(items, driver):
             print(e)
             continue
 
-# 価格を取得
-def get_price(driver):
-    try:
-        price = driver.find_element(By.CSS_SELECTOR, "#productInfo > div.productInfoArea > p > span.price").get_attribute("content")
-        price = int(price)
-        return price
-    except Exception as e:
-        try:
-            price = driver.find_element(By.CSS_SELECTOR, "#productInfo > div.productInfoArea > p > span:nth-child(6)").get_attribute("content")
-            price = int(price)
-            return price
-        except Exception as e:
-            try:
-                price = int(driver.find_element(By.ID, "priceCalculationConfig").get_attribute("data-price"))
-                return price
-            except Exception as e:
-                return '-'
-
 # 楽天表示情報を取得
 def get_rakuten(driver, result_list, restrict_urls):
     for window in driver.window_handles:
         try:
             driver.switch_to.window(window)
-            jan_code             = driver.find_element(By.ID, "rakujan-wrapper").get_attribute('data-rakujan-jan')
+            jan_code             = get_jan_code(driver)
             rakuzon_price        = get_price(driver)
             basic_point          = get_basic_point(driver)
             other_point          = 6

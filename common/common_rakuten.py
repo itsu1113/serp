@@ -110,6 +110,6 @@ def get_jan_code(driver):
             jan_code = driver.find_element(By.ID, "rakujan-wrapper").get_attribute('data-rakujan-jan')
             return jan_code
         except Exception as e:
-            # print(driver.current_url)
+            print(driver.current_url)
             raise e
 
