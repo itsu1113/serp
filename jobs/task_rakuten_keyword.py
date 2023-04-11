@@ -1,3 +1,7 @@
+# 任意の店舗とtime spanを設定。ブックスは28秒推奨。
+# keyword=楽天ブックス、楽天ビック、ドスパラ楽天市場店、等
+keyword='楽天ビック'
+time_span=1
 from common.common_rakuten import *
 
 @click.command('task_rakuten_keyword', help="Hello World.") 
@@ -13,9 +17,6 @@ def task_rakuten_keyword_run():
     restrict_urls=[]
     fieldnames=[]
 
-    # キーワード
-    # keyword='楽天ブックス'
-    keyword='楽天ビック'
     base_url="https://search.rakuten.co.jp/search/mall/"+keyword+"/?p="
 
     # p1-p28までをループする
@@ -104,7 +105,7 @@ def open_tab(items, driver):
             tab_idx=tab_idx+1
             # if tab_idx==3:
             #     break #test
-            time.sleep(28)#アクセス制限対策
+            time.sleep(time_span)#アクセス制限対策
         except Exception as e:
             print('Exception:'+'open_tab')
             print(e)
