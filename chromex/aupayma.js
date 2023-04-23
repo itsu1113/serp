@@ -3,16 +3,18 @@
 
 window.onload = function() {
   try {
+    
     // 通常販売価格
-    var price = document.getElementById('js-baseItemPrice').innerHTML.replace(',', '');
-    var point_per = document.querySelector('#js-accordionToggle > li > div > div.uniTriggerItem.js-accordion-trigger.js-item-scroll-trigger > a > span > span:nth-child(2)').innerText;
-    point_per = point_per.replace('\n', '').replace('%', '').replace(' ', '').replace('（', '').replace('）', '');
+    var price = document.getElementsByClassName('Price_price__currentPrice__FaSZR false')[0].innerText.replace(',', '').replace('円(税込)', '');
+    var point_per = document.getElementsByClassName('ReductionDetails_reduction__contents_rate__GEFFj')[0].innerText.replace('(', '').replace('%)', '');
+    point_per = point_per.replace(',', '');
 
     float_point_per=parseFloat(point_per)*0.01
     var actual_price = parseFloat(price)-(price*float_point_per);
 
+
     // 表示領域を取得
-    var ItemPrice_element = document.getElementsByClassName('priceValue')[0];
+    var ItemPrice_element = document.getElementsByClassName('Price_price__currentPrice__FaSZR false')[0];
 
     // 獲得ポイント％のHTML要素を作成
     var elem_point = document.createElement('div');
