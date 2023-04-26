@@ -1,7 +1,7 @@
 # 任意の店舗とtime spanを設定。ブックスは28秒推奨。
 # keyword=楽天ブックス、楽天ビック、ドスパラ楽天市場店、等
-keyword='楽天ビック'
-time_span=1
+keyword='楽天ブックス'
+time_span=28
 from common.common_rakuten import *
 
 @click.command('task_rakuten_keyword', help="Hello World.") 
@@ -31,9 +31,8 @@ def task_rakuten_keyword_run():
         # 結果リスト
         result_list=list()
         
-        # elems = driver.find_elements(By.CSS_SELECTOR, '#root > div.dui-container.main > div.dui-container.content > div.dui-container.searchresults > div')[0].find_elements(By.CSS_SELECTOR, "div.content.title > h2 > a")
-        # elems = driver.find_elements(By.CSS_SELECTOR, '#root > div.dui-container.main > div.dui-container.content > div:nth-child(3) > div > div')[0].find_elements(By.CSS_SELECTOR, "div.content.title > h2 > a")
-        elems = driver.find_elements(By.CSS_SELECTOR, '#root > div.dui-container.main > div.dui-container.content > div.searchResults > div > div > div')[0].find_elements(By.CSS_SELECTOR, "div.content.title > h2 > a")
+        # たまに変わる
+        elems = driver.find_elements(By.CSS_SELECTOR, '#root > div.dui-container.main > div.dui-container.content > div.searchResults > div > div > div')[0].find_elements(By.CSS_SELECTOR, "h2 > a")
 
         # 各商品URLをリスト化
         items = [] 
