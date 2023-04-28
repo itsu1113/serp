@@ -244,6 +244,65 @@ def get_leafer_asin(driver, result_list):
             print(e)
             continue
 
+def get_leafer_kataban(driver, result_list):
+    for result in result_list:
+        try:
+            # 無効なレコードはスキップ
+            if result['invalid']==1:
+                continue
+            # URLを開く
+            url='https://leafer.jp/KeywordSearch?word='+result['kataban']
+            driver.switch_to.window(driver.window_handles[0])
+            driver.get(url)
+            time.sleep(0.5)
+
+            # asinを取得
+            asin=driver.find_element(By.ID, "MainContent_ListView1_ctrl0_lbl_Asin_0").text
+            result['asin']=asin
+            leafer_url='https://leafer.jp/Search?code='+result['asin']
+            result['leafer_url']=leafer_url
+            keepa_url='https://keepa.com/#!product/5-'+result['asin']
+            result['keepa_url']=keepa_url
+            # URLを開く
+            driver.switch_to.window(driver.window_handles[0])
+            driver.get(leafer_url)
+            time.sleep(0.5)
+            
+            # アクセス制限チェック
+            if check_restrict():
+                logger.debug('restrict')
+                break
+            
+            # jan_codeを取得
+            jan_code=driver.find_element(By.ID, "MainContent_lbl_Jan").get_attribute('value')
+            result['jan_code']=jan_code
+            # 商品名
+            shohin_name=driver.find_element(By.ID, "MainContent_lbl_Title").get_attribute('innerHTML')
+            result['shohin_name']=shohin_name
+            # 出品価格
+            cart=driver.find_element(By.ID, "MainContent_txt_SalesPlanPrice").get_attribute('value')
+            result['cart']=cart
+            # 出品者数
+            seller_num=driver.find_element(By.ID, "MainContent_lbl_NewSeller").get_attribute('innerHTML')
+            result['seller_num']=seller_num
+            # if int(seller_num)==1: 
+            #     result['invalid']=1
+            # 3ヶ月合計販売数量
+            sales_volume = driver.find_element(By.XPATH, '//*[@id="MainContent_lbl_NewSum"]').get_attribute("innerHTML")
+            result['sales_volume']=int(sales_volume)
+            # 損益分岐点
+            bunkiten=driver.find_element(By.ID, "MainContent_lbl_NewDeposit").get_attribute('innerHTML')
+            bunkiten=str(bunkiten).replace('￥', '')
+            result['bunkiten']=bunkiten
+        except NoSuchElementException as e:
+            result['invalid']=1
+            print(e)
+            continue
+        except Exception as e:
+            result['invalid']=1
+            print(e)
+            continue
+
 
 # リクエストヘッダーを作成
 def make_get_authorization_header(method, canonical_uri, request_parameters, token):
