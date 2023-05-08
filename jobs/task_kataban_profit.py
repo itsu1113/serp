@@ -52,7 +52,8 @@ def task_kataban_profit_run():
                         print(result)
                         print(e)
                         continue
-
+        # アクセス制限対策
+        time.sleep(5)
 # 利益計算を行う
 def calc_profit(result_list):
     for result in result_list:
