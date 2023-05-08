@@ -16,10 +16,9 @@ def task_au_run():
     fieldnames=[]
     is_first=True
 
-
     for category in cate_list:
         logger.debug('--start '+ category)
-        base_url="https://wowma.jp/itemlist?categ_id="+category+"&spe_id=list_nav_prc&clow=3000&chigh="
+        base_url="https://wowma.jp/itemlist?categ_id="+category+"&spe_id=list_nav_prc&clow=5000&chigh=&user=24793691"
         # p1-p10までをループする
         for i in range(1, 10):
             item_list_page=base_url+"&page="+str(i)+"&clk="+str(i)
@@ -33,15 +32,12 @@ def task_au_run():
     
             # 商品情報取得
             get_item(result_list)
-
+            print(result_list)
             # リーファ情報取得
             get_leafer(driver, result_list)
 
             # 利益計算を行う
             calc_profit(result_list)
-
-                # for result in result_list:
-                #     print(result)
 
             # アマゾン出品許可チェック
             chek_approved(driver, result_list)
@@ -73,33 +69,17 @@ def task_au_run():
 def get_cate_list():
     # ランキングリスト
     cate_list=list(range(0))
-    cate_list.append("403405")
     cate_list.append("53")
     cate_list.append("46")
-    cate_list.append("29")
-    cate_list.append("35")
     cate_list.append("44")
     cate_list.append("41")
-    cate_list.append("33")
-    cate_list.append("34")
-    cate_list.append("31")
-    cate_list.append("54")
-    cate_list.append("40")
-    cate_list.append("42")
-    cate_list.append("49")
-    cate_list.append("52")
-    cate_list.append("56")
-    cate_list.append("59")
     return cate_list
 
 def get_jan1():
     try:
         jan_code=''
-        links = driver.find_elements(By.CSS_SELECTOR, "link")
-        for link in links:
-            if link.get_attribute("rel") == 'canonical':
-                jan_url=link.get_attribute("href")
-                jan_code=re.search(r'\d+', jan_url).group()
+        jan_code=driver.find_element(By.CLASS_NAME, "DetailComment_detailCommentText__oC9sN").text
+        jan_code=jan_code[1:14]
         return jan_code
     except Exception as e:
         return '-'
@@ -110,14 +90,7 @@ def get_price1():
         return item_price
     except Exception as e:
         return '-'
-    
-def get_price2():
-    try:
-        item_price=driver.find_elements(By.CLASS_NAME, 'elPriceNumber')[0].get_attribute('innerHTML').replace(',', '').replace('円', '')
-        return item_price
-    except Exception as e:
-        return '-'
-    
+
 def check_jan(jan_code):
     try:
         jan_code=str(jan_code)
@@ -133,14 +106,6 @@ def get_point_per1():
     try:
         point_per = driver.find_element(By.CSS_SELECTOR, "#js-accordionToggle > li > div > div.uniTriggerItem.js-accordion-trigger.js-item-scroll-trigger > a > span > span:nth-child(2)")
         point_per = point_per.get_attribute("innerHTML").replace('\n', '').replace('%', '').replace(' ', '').replace('（', '').replace('）', '')
-        point_per=float(point_per)*0.01
-        return point_per
-    except Exception as e:
-        return '-'
-    
-def get_point_per2():
-    try:
-        point_per=driver.find_elements(By.CLASS_NAME, 'elTotalRateRate')[0].get_attribute('innerHTML').replace('%', '')
         point_per=float(point_per)*0.01
         return point_per
     except Exception as e:
@@ -172,19 +137,8 @@ def get_item(result_list):
                 result['invalid']=1
                 continue
 
-            # 獲得ポイント％
-            point_per=get_point_per1()
-            if point_per=='-':
-                result['jan_code']=9999999999998
-                result['invalid']=1
-                continue
-
-            # 仕入値
-            item_price=get_price1()
-            if item_price=='-':
-                result['invalid']=1
-                continue
-            result['item_price']=int(item_price)-(int(item_price)*point_per)
+            # 実質仕入値
+            result['item_price']=driver.find_element(By.ID, "actual_price").get_attribute('value')
 
         except NoSuchElementException as e:
             result['invalid']=1
@@ -211,7 +165,7 @@ def calc_profit(result_list):
             # 粗利率
             gross_profit_per = round(gross_profit / float(result['cart']) * 100, 1)
             result['gross_profit_per'] = gross_profit_per
-                # gross_profit_per+=15 #test
+            # gross_profit_per+=15 #test
             if gross_profit_per < 1:
                 result['invalid'] = 1
 
@@ -226,5 +180,3 @@ def calc_profit(result_list):
             print(result)
             print(e)
             continue
-
-
