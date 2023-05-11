@@ -1,7 +1,7 @@
 # 任意の店舗とtime spanを設定。ブックスは28秒推奨。
-# keyword=楽天ブックス、楽天ビック、ドスパラ楽天市場店、等
-keyword='楽天ブックス'
-time_span=28
+# keyword=楽天ブックス、楽天ビック、ドスパラ楽天市場店、すまいる雑貨、インカムアゲイン等
+keyword='インカムアゲイン'
+time_span=1
 from common.common_rakuten import *
 
 @click.command('task_rakuten_keyword', help="Hello World.") 
