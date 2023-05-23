@@ -82,7 +82,7 @@ def calc_profit(result_list):
             gross_profit_per = round(gross_profit / float(result['cart']) * 100, 1)
             result['gross_profit_per'] = gross_profit_per
 
-            if gross_profit_per < 7:
+            if gross_profit_per < 6:
                 result['invalid'] = 1
 
             # 販売数
