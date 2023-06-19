@@ -28,7 +28,7 @@ def task_get_arari_run():
             get_leafer_asin(driver, result_list)
             
             # アクセス制限対策
-            # time.sleep(7)
+            time.sleep(5)
 
             # 結果リストをCSV出力
             with open("C:\\serp\\files\\"+file_name, 'a', newline="", encoding='UTF-8') as f:
