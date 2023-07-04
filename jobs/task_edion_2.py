@@ -19,6 +19,9 @@ def task_edion_2_run():
     get_rakuten(driver, result_list_rak)
 
     for result_row in result_list_rak:
+        # アクセス制限対策
+        time.sleep(5)
+        
         result_list=list()
         result_list.append(result_row)
         # リーファ情報取得
@@ -50,8 +53,7 @@ def task_edion_2_run():
                         print(result)
                         print(e)
                         continue
-    # アクセス制限対策
-    time.sleep(5)
+
     
 # 楽天表示情報を取得
 def get_rakuten(driver, result_list):
