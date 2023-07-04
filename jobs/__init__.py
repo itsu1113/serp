@@ -17,6 +17,9 @@ from jobs.task_hikari import task_hikari_run
 from jobs.task_registration import task_registration_run
 from jobs.task_au_1 import task_au_1_run
 from jobs.task_kataban_profit import task_kataban_profit_run
+from jobs.task_edion_1 import task_edion_1_run
+from jobs.task_edion_2 import task_edion_2_run
+
 
 # グループを作成
 job = AppGroup('job')
@@ -40,3 +43,8 @@ job.add_command(task_hikari_run)
 job.add_command(task_registration_run)
 job.add_command(task_au_1_run)
 job.add_command(task_kataban_profit_run)
+job.add_command(task_edion_1_run)
+job.add_command(task_edion_2_run)
+
+
+
