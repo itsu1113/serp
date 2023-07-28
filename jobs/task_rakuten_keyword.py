@@ -1,7 +1,7 @@
 # 任意の店舗とtime spanを設定。ブックスは28秒推奨。
 # keyword=楽天ブックス、楽天ビック、ドスパラ楽天市場店、すまいる雑貨、インカムアゲイン等
 # Joshin、便利生活　マイルーム、
-keyword='Joshin'
+keyword='調理器具専門店　i-cook'
 time_span=1
 from common.common_rakuten import *
 

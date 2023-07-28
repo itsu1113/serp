@@ -38,7 +38,7 @@ from datetime import timedelta
 import jpholiday
 
 def get_driver():
-    driver_path="C:\\Users\\ItsukiSato\\Documents\\20_TOOL\\chromedriver.exe"
+    driver_path="C:\\serp\\chromedriver.exe"
     # 起動時にオプションをつける。（ポート指定により、起動済みのブラウザのドライバーを取得）
     options = webdriver.ChromeOptions()
     options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
