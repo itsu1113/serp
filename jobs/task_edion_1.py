@@ -58,13 +58,22 @@ def get_rakuten(driver, result_list):
             other_point          = 7
             expecte_point        = rakuzon_price*(basic_point+other_point)/100
             actual_purchase_price= rakuzon_price-expecte_point
+            stock_quantity       = get_stock(driver)
             result_list.append({'invalid':0, 'rakuzon_price':str(rakuzon_price), 'basic_point':str(basic_point),\
-                                'url':driver.current_url, 'jan_code':str(jan_code), 'actual_purchase_price':actual_purchase_price})
+                                'url':driver.current_url, 'jan_code':str(jan_code), 'actual_purchase_price':actual_purchase_price,\
+                                'stock_quantity':stock_quantity})
         except Exception as e:
             print('Exception get_rakuten')
             print(driver.current_url)
             print(e)
             continue
+
+def get_stock(driver):
+    try:
+        return driver.find_element(By.XPATH, '//*[@id="rakutenLimitedId_aroundCart"]/table[2]/tbody/tr[6]/td/div[2]').text
+    except Exception as e:
+        return ''
+
 
 # 利益計算を行う
 def calc_profit(result_list):
