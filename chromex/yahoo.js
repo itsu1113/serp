@@ -8,7 +8,7 @@ window.onload = function() {
     var point_per = document.getElementsByClassName('elGetRate')[0].innerText.replace('%獲得', '');
     
     float_point_per=parseFloat(point_per)*0.01
-    var actual_price = parseFloat(price)-(price*float_point_per);
+    var actual_price = parseFloat(price)-(price/1.1*float_point_per);
 
     // 表示領域を取得
     var ItemPrice_element = document.getElementsByClassName('elPriceUnit')[0];
@@ -77,7 +77,7 @@ window.onload = function() {
       // 実質仕入値
       actual_price = actual_price - coupon_input;
       actual_price = actual_price - (actual_price*coupon_per_input/100);
-      actual_price = actual_price-(actual_price*point_input/100);
+      actual_price = actual_price-(actual_price/1.1*point_input/100);
       input1.value = Math.round(actual_price);
 
     };

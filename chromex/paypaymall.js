@@ -8,7 +8,7 @@ window.onload = function() {
     var point_per = document.getElementsByClassName('ItemPointHeader_rate')[0].innerText.replace('%', '');
     float_point_per=parseFloat(point_per)*0.01
     
-    var actual_price = parseFloat(price)-(price*float_point_per);
+    var actual_price = parseFloat(price)-(price/1.1*float_point_per);
 
     // 表示領域を取得
     var ItemPrice_element = document.getElementsByClassName('ItemPrice')[0];

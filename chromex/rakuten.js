@@ -10,7 +10,7 @@ window.onload = function() {
     
     float_point_per = point_per * 0.01;
     float_spu = spu * 0.01;
-    var actual_price = parseFloat(price)-(price*(float_point_per+float_spu));
+    var actual_price = parseFloat(price)-(price/1.1*(float_point_per+float_spu));
     // 表示領域を取得
     var ItemPrice_element = document.getElementById('priceCalculationConfig');
     
@@ -92,7 +92,7 @@ window.onload = function() {
       // 実質仕入値
       actual_price = actual_price - coupon_input;
       actual_price = actual_price - (actual_price*coupon_per_input/100);
-      actual_price = actual_price-(actual_price*(spu_input + point_input)/100);
+      actual_price = actual_price-(actual_price/1.1*(spu_input + point_input)/100);
       input1.value = Math.round(actual_price);
       
     };
