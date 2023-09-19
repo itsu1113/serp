@@ -26,9 +26,16 @@ def task_rakuten_run():
         result_list=list()
         
         # Webページを取得して解析する
-        html=requests.get(rnk['url'])
-        soup=BeautifulSoup(html.text,'html.parser')
-        items=soup.find_all(class_='rnkRanking_itemName')
+        # html=requests.get(rnk['url'])
+        # soup=BeautifulSoup(html.text,'html.parser')
+        # items=soup.find_all(class_='rnkRanking_itemName')
+        driver.get(rnk['url'])
+        elems = driver.find_elements(By.CLASS_NAME, 'rnkRanking_itemName')
+
+        # 各商品URLをリスト化
+        items = [] 
+        for elem in elems:
+            items.append(elem.find_element(By.TAG_NAME, "a").get_attribute("href"))
 
         # タブに商品を表示させる
         open_tab(items, driver)
@@ -276,10 +283,11 @@ def open_tab(items, driver):
     for item in items:
         try:
             # 商品URLを取得
-            surl=item.a.get("href")
+            # surl=item.find_element(By.TAG_NAME, "a").get_attribute("href")
+
             # URLを開き、新しいタブを開く
             driver.switch_to.window(driver.window_handles[tab_idx])
-            driver.get(surl)
+            driver.get(item)
             driver.execute_script("window.open('https://www.google.com');")
             time.sleep(2)
             tab_idx=tab_idx+1
