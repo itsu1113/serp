@@ -104,7 +104,7 @@ def get_price1():
     
 def get_price2():
     try:
-        item_price=driver.find_elements(By.CLASS_NAME, 'elPriceNumber')[0].get_attribute('innerHTML').replace(',', '').replace('円', '')
+        item_price=driver.find_element(By.XPATH, '//*[@id="dl_sell_price"]/dd/strong').get_attribute("data-price")
         return item_price
     except Exception as e:
         return '-'
@@ -196,7 +196,7 @@ def get_item(driver, result_list):
             # 仕入値
             item_price=get_price1()
             if item_price=='-':
-                # item_price=get_price2()
+                item_price=get_price2()
                 if item_price=='-':
                     result['invalid']=1
                     continue
@@ -227,8 +227,8 @@ def calc_profit(result_list):
             gross_profit_per = round(gross_profit / float(result['cart']) * 100, 1)
             result['gross_profit_per'] = gross_profit_per
 
-            if gross_profit_per < 1:
-                result['invalid'] = 1
+            # if gross_profit_per < 1:
+            #     result['invalid'] = 1
 
             # 販売数
             sales_volume = int(result['sales_volume'])
