@@ -32,7 +32,7 @@ def task_au_run():
     
             # 商品情報取得
             get_item(result_list)
-            print(result_list)
+            # print(result_list)
             # リーファ情報取得
             get_leafer(driver, result_list)
 
@@ -121,7 +121,7 @@ def get_item(result_list):
             # URLを開く
             driver.switch_to.window(driver.window_handles[0])
             driver.get(result['item_url'])
-            time.sleep(0.5)
+            time.sleep(1.5)
             
             # jan_code
             jan_code=get_jan1()
