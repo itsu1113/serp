@@ -5,7 +5,7 @@ window.onload = function() {
   try {
     // 通常販売価格
     var price = document.getElementsByClassName('elPriceNumber')[0].innerHTML.replace(',', '');
-    var point_per = document.getElementsByClassName('elGetRate')[0].innerText.replace('%獲得', '');
+    var point_per = get_point_per();
     
     float_point_per=parseFloat(point_per)*0.01
     var actual_price = parseFloat(price)-(price/1.1*float_point_per);
@@ -91,5 +91,20 @@ window.onload = function() {
   } catch(e) {
     console.log( e.message );
   }
-};
-
+}
+function get_point_per() {
+  try {
+    point_per = document.getElementsByClassName('elGetRate')[0].innerText.replace('%獲得', '');
+    if (point_per=='') {
+      throw new Error('not get');
+    }
+    return point_per
+  } catch(e) {
+    try {
+      point_per = document.getElementsByClassName('elGetRateText')[0].innerHTML.replace('%獲得', '');
+      return point_per
+    } catch(e) {
+      return 0
+    }
+  }
+}
