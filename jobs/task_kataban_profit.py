@@ -70,8 +70,8 @@ def calc_profit(result_list):
             gross_profit_per = round(gross_profit / float(result['cart']) * 100, 1)
             result['gross_profit_per'] = gross_profit_per
 
-            if gross_profit_per < 1:
-                result['invalid'] = 1
+            # if gross_profit_per < 1:
+            #     result['invalid'] = 1
 
             # 販売数
             sales_volume = int(result['sales_volume'])
