@@ -14,7 +14,7 @@ def task_kataban_profit_run():
     input_list=[]
     is_first=True
 
-    with open('C:\\serp\\files\\input\\3col.tsv', encoding='utf-8', newline='') as f:
+    with open('C:\\serp\\files\\input\\3col.tsv', encoding='shift-jis', newline='') as f:
         for cols in csv.reader(f, delimiter='\t'):
             input_list.append(cols)
 
