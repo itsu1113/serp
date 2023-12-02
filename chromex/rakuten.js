@@ -6,7 +6,7 @@ window.onload = function() {
     // 通常販売価格
     var price = document.getElementById('priceCalculationConfig').getAttribute("data-price");
     var point_per = parseFloat(get_point_per());
-    var spu = 6;
+    var spu = 3;
     
     float_point_per = point_per * 0.01;
     float_spu = spu * 0.01;
