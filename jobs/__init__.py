@@ -20,6 +20,7 @@ from jobs.task_kataban_profit import task_kataban_profit_run
 from jobs.task_edion_1 import task_edion_1_run
 from jobs.task_edion_2 import task_edion_2_run
 from jobs.task_qoo10 import task_qoo10_run
+from jobs.task_au_koji import task_au_koji_run
 
 
 # グループを作成
@@ -47,5 +48,6 @@ job.add_command(task_kataban_profit_run)
 job.add_command(task_edion_1_run)
 job.add_command(task_edion_2_run)
 job.add_command(task_qoo10_run)
+job.add_command(task_au_koji_run)
 
 
