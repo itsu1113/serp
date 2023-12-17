@@ -93,18 +93,26 @@ window.onload = function() {
   }
 }
 function get_point_per() {
+  // try {
+  //   point_per = document.getElementsByClassName('elGetRate')[0].innerText.replace('%獲得', '');
+  //   if (point_per=='') {
+  //     throw new Error('not get');
+  //   }
+  //   return point_per
+  // } catch(e) {
+  //   try {
+  //     point_per = document.getElementsByClassName('elGetRateText')[0].innerHTML.replace('%獲得', '');
+  //     return point_per
+  //   } catch(e) {
+  //     return 0
+  //   }
+  // }
+
   try {
-    point_per = document.getElementsByClassName('elGetRate')[0].innerText.replace('%獲得', '');
-    if (point_per=='') {
-      throw new Error('not get');
-    }
+    point_per = document.getElementsByClassName('elGetRateText')[0].innerHTML.replace('%獲得', '');
     return point_per
   } catch(e) {
-    try {
-      point_per = document.getElementsByClassName('elGetRateText')[0].innerHTML.replace('%獲得', '');
-      return point_per
-    } catch(e) {
-      return 0
-    }
+    return 0
   }
+
 }
