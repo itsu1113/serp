@@ -86,7 +86,11 @@ def chek_approved(driver, result_list):
             # 出品できるか　できない場合はexception
             check=driver.find_element(By.ID,'reconcile-item-title').get_attribute("innerHTML")
             result['approved'] = '○'
-            
+
+            # ノーブランドASINに対して、のエラーの場合は無効
+            if len(driver.find_elements(By.CLASS_NAME,'bottom-padding-50')) > 0 :
+                result['invalid']=1
+
             # 新品出品OKか
             condition=driver.find_element(By.XPATH,'//*[@id="condition_type"]').get_attribute("options")
             condition=ast.literal_eval(condition)
