@@ -330,7 +330,7 @@ def get_rakuten(driver, result_list, restrict_urls):
             jan_code             = get_jan_code(driver)
             rakuzon_price        = get_price(driver)
             basic_point          = get_basic_point(driver)
-            other_point          = 6
+            other_point          = 3
             expecte_point        = rakuzon_price*(basic_point+other_point)/100
             actual_purchase_price= rakuzon_price-expecte_point
             result_list.append({'invalid':0, 'jan_code':str(jan_code), 'rakuzon_price':str(rakuzon_price), 'basic_point':str(basic_point),\
