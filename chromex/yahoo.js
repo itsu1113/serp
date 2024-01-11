@@ -109,7 +109,7 @@ function get_point_per() {
   // }
 
   try {
-    point_per = document.getElementsByClassName('elGetRateText')[0].innerHTML.replace('%獲得', '');
+    point_per = document.getElementsByClassName('elPointRate')[0].innerHTML.replace('%獲得', '');
     return point_per
   } catch(e) {
     return 0

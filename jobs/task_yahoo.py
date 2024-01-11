@@ -148,7 +148,7 @@ def check_jan(jan_code):
 
 def get_point_per00():
     try:
-        point_per=driver.find_elements(By.CLASS_NAME, 'elGetRate')[0].get_attribute('innerHTML').replace('\n', '').replace('%獲得', '').replace(' ', '')
+        point_per=driver.find_elements(By.CLASS_NAME, 'elPointRate')[0].get_attribute('innerHTML').replace('\n', '').replace('%獲得', '').replace(' ', '')
         point_per=round(float(point_per)*0.01, 3) #取得できなかった場合キャストの際にexceptionになる
         return point_per
     except Exception as e:
@@ -170,7 +170,7 @@ def get_point_per1():# たぶんつかってない
     except Exception as e:
         return '-'
     
-def get_point_per2():
+def get_point_per2():# たぶんつかってない
     try:
         point_per=driver.find_elements(By.CLASS_NAME, 'elGetRateText')[0].get_attribute('innerHTML').replace('%獲得', '')
         point_per=float(point_per)*0.01
