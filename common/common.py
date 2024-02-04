@@ -92,16 +92,17 @@ def chek_approved(driver, result_list):
                 result['invalid']=1
 
             # 新品出品OKか
-            condition=driver.find_element(By.XPATH,'//*[@id="condition_type"]').get_attribute("options")
-            condition=ast.literal_eval(condition)
-            wk_condition='-'
-            for c in condition:
-                if c['name']=='新品':
-                    wk_condition='○'
-                    break
-            result['condition'] = wk_condition
-            if wk_condition == '-':
-                result['invalid']=1
+            # condition=driver.find_element(By.XPATH,'//*[@id="condition_type"]').get_attribute("options")
+            # condition=ast.literal_eval(condition)
+            # wk_condition='-'
+            # for c in condition:
+            #     if c['name']=='新品':
+            #         wk_condition='○'
+            #         break
+            # result['condition'] = wk_condition
+            # if wk_condition == '-':
+            #     result['invalid']=1
+            result['condition'] = '-'
 
         except NoSuchElementException as e:
             result['approved']  = '-'
