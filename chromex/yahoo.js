@@ -3,8 +3,10 @@
 
 window.onload = function() {
   try {
+    // テスト
+    // window.alert(document.getElementsByClassName('elPrice')[0].innerText.replace(',', '').replace('円', ''));
     // 通常販売価格
-    var price = document.getElementsByClassName('elPriceNumber')[0].innerHTML.replace(',', '');
+    var price = document.getElementsByClassName('elPrice')[0].innerText.replace(',', '').replace('円', '');
     var point_per = get_point_per();
     
     float_point_per=parseFloat(point_per)*0.01
