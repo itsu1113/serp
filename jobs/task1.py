@@ -3,7 +3,7 @@ from flask.cli import with_appcontext
 # from models import db
 from common.common_rakuten import *
 
-api = keepa.Keepa(accesskey)
+# api = keepa.Keepa(accesskey)
 
 from logger import logger
 driver=get_driver()
