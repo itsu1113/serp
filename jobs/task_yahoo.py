@@ -130,7 +130,8 @@ def get_price1():
     
 def get_price2():
     try:
-        item_price=driver.find_elements(By.CLASS_NAME, 'elPriceNumber')[0].get_attribute('innerHTML').replace(',', '').replace('円', '')
+        # item_price=driver.find_elements(By.CLASS_NAME, 'elPriceNumber')[0].get_attribute('innerHTML').replace(',', '').replace('円', '')
+        item_price=driver.find_elements(By.CLASS_NAME, 'elPrice')[0].get_attribute('innerText').replace(',', '').replace('円', '')
         return item_price
     except Exception as e:
         return '-'
