@@ -15,6 +15,17 @@ window.onload = function() {
     // 表示領域を取得
     var ItemPrice_element = document.getElementsByClassName('elPriceUnit')[0];
 
+    // 通常価格のHTML要素を作成
+    var elem_price = document.createElement('div');
+    elem_price.textContent = '通常価格：';
+    var elem_price_input = document.createElement('input');
+    elem_price_input.setAttribute("size", "2");
+    elem_price_input.value = price;
+
+    //  要素の中の末尾に挿入
+    ItemPrice_element.appendChild(elem_price);
+    elem_price.appendChild(elem_price_input);
+
     // 獲得ポイント％のHTML要素を作成
     var elem_point = document.createElement('div');
     elem_point.textContent = '獲得ポイント％：';
@@ -69,7 +80,9 @@ window.onload = function() {
     elem_actual_price.appendChild(button);
 
     button.onclick = function() {
-      actual_price = price;
+      // 通常価格
+      // actual_price = price;
+      actual_price = elem_price_input.value.replace(',', '');
       // 獲得ポイント％
       point_input = elem_point_input.value;
       // クー値引き円
