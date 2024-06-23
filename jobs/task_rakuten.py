@@ -92,6 +92,7 @@ def task_rakuten_run():
 def get_rnk_list():
     # ランキングリスト
     rnk_list=list(range(0))
+    rnk_list.append({'code':"201912"})
     rnk_list.append({'code':"100087"})
     rnk_list.append({'code':"553158"})
     rnk_list.append({'code':"100212"})
