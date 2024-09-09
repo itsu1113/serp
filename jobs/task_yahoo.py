@@ -108,8 +108,7 @@ def get_cate_list():
 
 def get_jan1():
     try:
-        jan_code=driver.find_element(By.CSS_SELECTOR, "#itm_inf > div.ItemDetails > ul").get_attribute('innerHTML')
-        jan_code=re.findall('JANコード/ISBNコード：.*', str(jan_code))[0].replace('JANコード/ISBNコード：', '').replace('</li>', '')
+        jan_code=driver.find_element(By.CSS_SELECTOR, "#itm_cat > tbody > tr:nth-child(2) > td").get_attribute('innerHTML')
         return jan_code
     except Exception as e:
         return '-'
@@ -123,7 +122,7 @@ def get_jan2():
     
 def get_price1():
     try:
-        item_price=driver.find_elements(By.CLASS_NAME, 'ItemPrice_price')[0].get_attribute('innerHTML').replace(',', '').replace('円', '')
+        item_price=driver.find_elements(By.CLASS_NAME, 'styles_price__7WGwS')[0].text.replace(',', '').replace('円', '')
         return item_price
     except Exception as e:
         return '-'
@@ -149,7 +148,7 @@ def check_jan(jan_code):
 
 def get_point_per00():
     try:
-        point_per=driver.find_elements(By.CLASS_NAME, 'elPointRate')[0].get_attribute('innerHTML').replace('\n', '').replace('%獲得', '').replace(' ', '')
+        point_per=driver.find_elements(By.CLASS_NAME, 'styles_pointRatio__EepZ3')[0].text.replace('\n', '').replace('%獲得', '').replace(' ', '')
         point_per=round(float(point_per)*0.01, 3) #取得できなかった場合キャストの際にexceptionになる
         return point_per
     except Exception as e:
