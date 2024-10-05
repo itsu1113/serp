@@ -92,7 +92,7 @@ def task_rakuten_run():
 def get_rnk_list():
     # ランキングリスト
     rnk_list=list(range(0))
-    rnk_list.append({'code':"204586"}) # 炊飯器
+    # rnk_list.append({'code':"204586"}) # 炊飯器
     rnk_list.append({'code':"201912"}) # リール
     rnk_list.append({'code':"100087"})
     rnk_list.append({'code':"553158"})
