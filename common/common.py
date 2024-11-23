@@ -76,6 +76,7 @@ def chek_approved(driver, result_list):
             driver.switch_to.window(driver.window_handles[0])
             driver.get(seller_url)
             time.sleep(3)#3秒必要
+            time.sleep(5)#Server Busy対策
             
             if driver.title == 'Server Busy':
                 logger.debug('Server Busy '+ result['asin'])
