@@ -22,6 +22,7 @@ from jobs.task_edion_2 import task_edion_2_run
 from jobs.task_qoo10 import task_qoo10_run
 from jobs.task_au_koji import task_au_koji_run
 from jobs.task_rakuten_v2 import task_rakuten_v2_run
+from jobs.task_edion_filter import task_edion_filter_run
 
 # グループを作成
 job = AppGroup('job')
@@ -50,5 +51,6 @@ job.add_command(task_edion_2_run)
 job.add_command(task_qoo10_run)
 job.add_command(task_au_koji_run)
 job.add_command(task_rakuten_v2_run)
+job.add_command(task_edion_filter_run)
 
 
