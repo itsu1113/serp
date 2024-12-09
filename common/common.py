@@ -562,3 +562,31 @@ def focusToElement(driver, by, value, preventScroll):
     JavaScriptFocusToElement = "arguments[0].focus({'preventScroll': arguments[1]})"
     element = driver.find_element(by, value)
     driver.execute_script(JavaScriptFocusToElement, element, preventScroll)
+
+
+def get_mori(driver, result_list):
+    for result in result_list:
+        try:
+            # 無効なレコードはスキップ
+            if result['invalid']==1:
+                continue
+            mori_url='https://www.morimori-kaitori.jp/search/'+result['jan_code']
+            result['mori_url']=mori_url
+
+            # URLを開く
+            driver.switch_to.window(driver.window_handles[0])
+            driver.get(mori_url)
+            time.sleep(0.5)
+            
+            # 森価格を取得
+            mori_price=driver.find_elements(By.CLASS_NAME, 'priceRightWrap')[0].text.replace(',', '').replace('円', '')
+            result['mori_price']=mori_price
+
+        except NoSuchElementException as e:
+            result['invalid']=1
+            # print(e)
+            continue
+        except Exception as e:
+            result['invalid']=1
+            print(e)
+            continue
