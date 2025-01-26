@@ -89,7 +89,6 @@ def get_cate_list():
     cate_list.append("リール")
     cate_list.append("ヤマダデンキ")
     cate_list.append("コジマ")
-    cate_list.append("ヤマダ")
     cate_list.append("ベスト電気")
     cate_list.append("ソフマップ")
     cate_list.append("Joshin")
