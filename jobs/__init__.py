@@ -24,6 +24,7 @@ from jobs.task_au_koji import task_au_koji_run
 from jobs.task_rakuten_v2 import task_rakuten_v2_run
 from jobs.task_edion_filter import task_edion_filter_run
 from jobs.task_yahoo_resale import task_yahoo_resale_run
+from jobs.task_yahoo_resale_v2 import task_yahoo_resale_v2_run
 
 
 # グループを作成
@@ -55,5 +56,6 @@ job.add_command(task_au_koji_run)
 job.add_command(task_rakuten_v2_run)
 job.add_command(task_edion_filter_run)
 job.add_command(task_yahoo_resale_run)
+job.add_command(task_yahoo_resale_v2_run)
 
 
