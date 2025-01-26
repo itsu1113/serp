@@ -23,8 +23,8 @@ def task_yahoo_run():
         logger.debug('--start '+ category)
         base_url="https://shopping.yahoo.co.jp/search?p="+category+"&first=1&ss_first=1&tab_ex=commerce&uIv=on&pf=3000&sc_i=shp_pc_search_searchBox_2&ts=1631795642&mcr=f9a843cfffadfda95a7a426b8a79652a&sretry=1&area=13&b="
 
-        # p1-p10までをループする
-        for i in range(1, 302, 30):
+        # p1-p5までをループする
+        for i in range(1, 152, 30):
             item_list_page=base_url+str(i)
             driver=get_driver()
             driver.get(item_list_page)
