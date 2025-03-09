@@ -127,7 +127,7 @@ def get_jan2():
     
 def get_price1():
     try:
-        item_price=driver.find_elements(By.CLASS_NAME, 'styles_price__7WGwS')[0].text.replace(',', '').replace('円', '')
+        item_price=driver.find_elements(By.CLASS_NAME, 'styles_price__CD3pM')[0].text.replace(',', '').replace('円', '')
         return item_price
     except Exception as e:
         return '-'

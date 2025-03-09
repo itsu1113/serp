@@ -4,11 +4,11 @@
 window.onload = function() {
   try {
     // テスト
-    // window.alert(document.getElementsByClassName('styles_pointRatio__EepZ3')[0].innerHTML.replace('<!-- -->', '').replace('%獲得', ''));
+    // window.alert(document.getElementsByClassName('styles_price__CD3pM')[0].innerText.replace(',', '').replace('円', ''));
     // 通常販売価格
-    var price = document.getElementsByClassName('styles_price__7WGwS')[0].innerText.replace(',', '').replace('円', '');
+    var price = document.getElementsByClassName('styles_price__CD3pM')[0].innerText.replace(',', '').replace('円', '');
     var point_per = get_point_per();
-    
+
     float_point_per=parseFloat(point_per)*0.01
     var actual_price = parseFloat(price)-(price/1.1*float_point_per);
 
