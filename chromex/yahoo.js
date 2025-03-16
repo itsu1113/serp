@@ -4,7 +4,9 @@
 window.onload = function() {
   try {
     // テスト
-    // window.alert(document.getElementsByClassName('styles_price__CD3pM')[0].innerText.replace(',', '').replace('円', ''));
+    // window.alert(document.getElementsByClassName('styles_pointRatio__Uvfii')[0].innerHTML.replace('<!-- -->', '').replace('%獲得', ''));
+
+    // window.alert(document.getElementsByClassName('styles_pointRatio__EepZ3')[0].innerHTML.replace('<!-- -->', '').replace('%獲得', ''));
     // 通常販売価格
     var price = document.getElementsByClassName('styles_price__CD3pM')[0].innerText.replace(',', '').replace('円', '');
     var point_per = get_point_per();
@@ -124,7 +126,7 @@ function get_point_per() {
   // }
 
   try {
-    point_per = document.getElementsByClassName('styles_pointRatio__EepZ3')[0].innerHTML.replace('<!-- -->', '').replace('%獲得', '');
+    point_per = document.getElementsByClassName('styles_pointRatio__Uvfii')[0].innerHTML.replace('<!-- -->', '').replace('%獲得', '');
     return point_per
   } catch(e) {
     return 0

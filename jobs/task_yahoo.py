@@ -153,7 +153,7 @@ def check_jan(jan_code):
 
 def get_point_per00():
     try:
-        point_per=driver.find_elements(By.CLASS_NAME, 'styles_pointRatio__EepZ3')[0].text.replace('\n', '').replace('%獲得', '').replace(' ', '')
+        point_per=driver.find_elements(By.CLASS_NAME, 'styles_pointRatio__Uvfii')[0].text.replace('\n', '').replace('%獲得', '').replace(' ', '')
         point_per=round(float(point_per)*0.01, 3) #取得できなかった場合キャストの際にexceptionになる
         return point_per
     except Exception as e:
