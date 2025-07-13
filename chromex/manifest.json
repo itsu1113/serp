@@ -1,7 +1,7 @@
 {
   "name": "Sample",
   "version": "1.0.0",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "description": "chromex",
   "content_scripts": [{
     "matches": ["https://*.rakuten.co.jp/*"],
