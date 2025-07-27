@@ -579,7 +579,7 @@ def get_mori(driver, result_list):
             time.sleep(0.5)
             
             # 森価格を取得
-            mori_price=driver.find_elements(By.CLASS_NAME, 'priceRightWrap')[0].text.replace(',', '').replace('円', '')
+            mori_price=driver.find_elements(By.CLASS_NAME, 'price-normal-number')[0].text.replace(',', '').replace('円', '')
             result['mori_price']=mori_price
 
         except NoSuchElementException as e:

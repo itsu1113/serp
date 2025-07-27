@@ -79,7 +79,7 @@ def task_yahoo_resale_v2_run():
 def get_cate_list():
     # ランキングリスト
     cate_list=list(range(0))
-    cate_list.append("アプライド")
+    cate_list.append("アプライド Yahoo!店")
     cate_list.append("らいぶshop")
     cate_list.append("測定の森")
     cate_list.append("モバイル販売")
