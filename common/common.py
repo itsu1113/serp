@@ -576,7 +576,7 @@ def get_mori(driver, result_list):
             # URLを開く
             driver.switch_to.window(driver.window_handles[0])
             driver.get(mori_url)
-            time.sleep(0.5)
+            time.sleep(5)#アクセス拒否されるから時間調整
             
             # 森価格を取得
             mori_price=driver.find_elements(By.CLASS_NAME, 'price-normal-number')[0].text.replace(',', '').replace('円', '')
