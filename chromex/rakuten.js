@@ -104,7 +104,7 @@ window.onload = function() {
 
 function get_point_per() {
   try {
-    point_per = document.querySelector('#rakutenLimitedId_cart > tbody > tr:nth-child(2) > td > div > div > ul.point-summary__campaign___2KiT-.point-summary__multiplier-up___3664l.point-up > li:nth-child(2)').innerText.replace('倍UP', '');
+    point_per = document.querySelector('#rakutenLimitedId_cart > tbody > tr:nth-child(1) > div:nth-child(2) > div > div:nth-child(4) > div > div > ul.point-summary__campaign___2KiT-.point-summary__multiplier-up___3664l.point-up > li:nth-child(2)').innerText.replace('倍UP', '');
     return point_per
   } catch(e) {
     try {
