@@ -14,7 +14,7 @@ def is_sold(driver):
 # 基本倍率を取得_楽天
 def get_basic_point(driver):
     try:
-        point=driver.find_element(By.CSS_SELECTOR, "#rakutenLimitedId_cart > tbody > tr:nth-child(1) > div:nth-child(2) > div > div:nth-child(4) > div > div > ul.point-summary__campaign___2KiT-.point-summary__multiplier-up___3664l.point-up > li:nth-child(2)").get_attribute('innerHTML')
+        point=driver.find_element(By.CSS_SELECTOR, "#rakutenLimitedId_cart > tbody > tr:nth-child(1) > div:nth-child(2) > div > div:nth-child(4) > div > div > ul.point-summary__campaign___14I4T.point-summary__multiplier-up___3wYrU.point-up > li:nth-child(2)").get_attribute('innerHTML')
         point=point.replace("倍UP", "")
         return int(point)
     except Exception as e:
@@ -36,7 +36,7 @@ def get_basic_point(driver):
                     return int(point)
                 except Exception as e:
                     try:
-                        point=driver.find_element(By.CSS_SELECTOR, "#rakutenLimitedId_cart > tbody > tr:nth-child(3) > td > div > div > ul.point-summary__campaign___2KiT-.point-summary__rebate___OwnwU.point-superdeal > li:nth-child(2)").get_attribute('innerHTML')
+                        point=driver.find_element(By.CSS_SELECTOR, "#rakutenLimitedId_cart > tbody > tr:nth-child(1) > div:nth-child(2) > div > div:nth-child(4) > div > div > ul.point-summary__campaign___14I4T.point-summary__rebate___AO-bR.point-superdeal > li:nth-child(2)").get_attribute('innerHTML')
                         point=point.replace("%ポイントバック", "")
                         point=int(point)-1
                         return point
