@@ -85,7 +85,15 @@ def chek_approved(driver, result_list):
                 # driver.quit()
 
             # 出品できるか　できない場合はexception
-            check=driver.find_element(By.ID,'reconcile-item-title').get_attribute("innerHTML")
+            # check=driver.find_element(By.ID,'reconcile-item-title').get_attribute("innerHTML")
+            check = driver.find_elements(By.CSS_SELECTOR, '[data-testid="error-panel"]')
+            if len(check) > 0:
+                # エラーモーダル検知
+                result['approved']  = '-'
+                result['condition'] = '-'
+                result['invalid']=1
+                continue
+
             result['approved'] = '○'
 
             # ノーブランドASINに対して、のエラーの場合は無効
