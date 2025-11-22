@@ -41,7 +41,7 @@ def task_qoo10_run():
 
             # 商品情報取得
             get_item(driver, result_list)
-            
+
             # リーファ情報取得
             get_leafer(driver, result_list)
 
@@ -84,8 +84,12 @@ def get_cate_list():
 def get_jan1():
     try:
         jan_code=driver.find_element(By.XPATH, '//*[@id="tr_pan_industry"]/td').text
+        # jan_code=driver.find_element(By.ID, 'tr_pan_industry')
+        # jan_code=driver.find_element(By.CSS_SELECTOR, '#tr_pan_industry > td').text
+        # print("JANコードとれた！！！！！！！！！！！！！")
         return jan_code
     except Exception as e:
+        # print("JANコードとれない")
         return '-'
     
 def get_jan2():
@@ -160,7 +164,7 @@ def get_item(driver, result_list):
                 continue
 
             # URLを開く
-            driver.switch_to.window(driver.window_handles[0])
+            # driver.switch_to.window(driver.window_handles[0])
             driver.get(result['item_url'])
             time.sleep(0.5)
             

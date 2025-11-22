@@ -266,7 +266,7 @@ def get_rakuten(driver, result_list):
     for result in result_list:
         try:
             # URLを開く
-            driver.switch_to.window(driver.window_handles[0])
+            # driver.switch_to.window(driver.window_handles[0])
             driver.get(result['item_url'])
             time.sleep(0.5)
 

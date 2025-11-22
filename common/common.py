@@ -73,7 +73,7 @@ def chek_approved(driver, result_list):
             result['seller_url'] = seller_url
             
             # URLを開く
-            driver.switch_to.window(driver.window_handles[0])
+            # driver.switch_to.window(driver.window_handles[0])
             driver.get(seller_url)
             time.sleep(3)#3秒必要
             time.sleep(5)#Server Busy対策
@@ -130,7 +130,7 @@ def chek_sales(driver, result_list):
     for result in result_list:
         try:
             # URLを開く
-            driver.switch_to.window(driver.window_handles[0])
+            # driver.switch_to.window(driver.window_handles[0])
             driver.get(result['leafer_url'])
             time.sleep(3)
             
@@ -168,7 +168,7 @@ def get_leafer(driver, result_list):
             keepa_url='https://keepa.com/#!search/5-'+result['jan_code']
             result['keepa_url']=keepa_url
             # URLを開く
-            driver.switch_to.window(driver.window_handles[0])
+            # driver.switch_to.window(driver.window_handles[0])
             driver.get(leafer_url)
             time.sleep(0.5)
             
@@ -219,7 +219,7 @@ def get_leafer_asin(driver, result_list):
             keepa_url='https://keepa.com/#!product/5-'+result['asin']
             result['keepa_url']=keepa_url
             # URLを開く
-            driver.switch_to.window(driver.window_handles[0])
+            # driver.switch_to.window(driver.window_handles[0])
             driver.get(leafer_url)
             time.sleep(0.5)
             
@@ -266,7 +266,7 @@ def get_leafer_kataban(driver, result_list):
                 continue
             # URLを開く
             url='https://leafer.jp/KeywordSearch?word='+result['kataban']
-            driver.switch_to.window(driver.window_handles[0])
+            # driver.switch_to.window(driver.window_handles[0])
             driver.get(url)
             time.sleep(0.5)
 
@@ -278,7 +278,7 @@ def get_leafer_kataban(driver, result_list):
             keepa_url='https://keepa.com/#!product/5-'+result['asin']
             result['keepa_url']=keepa_url
             # URLを開く
-            driver.switch_to.window(driver.window_handles[0])
+            # driver.switch_to.window(driver.window_handles[0])
             driver.get(leafer_url)
             time.sleep(0.5)
             
@@ -582,7 +582,7 @@ def get_mori(driver, result_list):
             result['mori_url']=mori_url
 
             # URLを開く
-            driver.switch_to.window(driver.window_handles[0])
+            # driver.switch_to.window(driver.window_handles[0])
             driver.get(mori_url)
             time.sleep(5)#アクセス拒否されるから時間調整
             

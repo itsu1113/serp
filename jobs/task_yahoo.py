@@ -33,7 +33,7 @@ def task_yahoo_run():
 
             # ページから商品urlを取得しshohin_listへ格納
             shohin_list = []
-            looplist_items = driver.find_elements(By.CLASS_NAME, 'LoopList__item') 
+            looplist_items = driver.find_elements(By.CLASS_NAME, 'SearchResult_SearchResultItem__mJ7vY') 
             for l in looplist_items:
                 atags = l.find_elements(By.TAG_NAME, "a")
                 for atag in atags:
@@ -46,8 +46,10 @@ def task_yahoo_run():
             cnt=0
             for shohin in shohin_list:
                 result_list.append({'invalid':0, 'category':category, 'item_url':shohin})
-                # if cnt==10:
+                # cnt+=1
+                # if cnt==5:
                 #     break
+            
             # 商品情報取得
             get_item(driver, result_list)
             
@@ -56,7 +58,7 @@ def task_yahoo_run():
 
             # 利益計算を行う
             calc_profit(result_list)
-
+ 
             # アマゾン出品許可チェック
             chek_approved(driver, result_list)
 
@@ -191,10 +193,10 @@ def get_item(driver, result_list):
                 continue
 
             # URLを開く
-            driver.switch_to.window(driver.window_handles[0])
+            # driver.switch_to.window(driver.window_handles[0])
             driver.get(result['item_url'])
             time.sleep(0.5)
-            
+
             # jan_code
             jan_code=get_jan1()
             if jan_code=='-':
@@ -210,7 +212,7 @@ def get_item(driver, result_list):
                 result['jan_code']=9999999999999
                 result['invalid']=1
                 continue
-                
+            
             # 獲得ポイント％
             point_per=get_point_per00()
             if point_per=='-':
@@ -223,7 +225,7 @@ def get_item(driver, result_list):
                             result['jan_code']=9999999999998
                             result['invalid']=1
                             continue
-                            
+
             # 仕入値
             item_price=get_price1()
             if item_price=='-':
