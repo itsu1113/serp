@@ -28,6 +28,7 @@ def task_yahoo_run():
             item_list_page=base_url+str(i)
             driver=get_driver()
             driver.get(item_list_page)
+            time.sleep(3)
 
             # shohin_list = driver.find_elements(By.CLASS_NAME, class_name)
 
@@ -46,19 +47,19 @@ def task_yahoo_run():
             cnt=0
             for shohin in shohin_list:
                 result_list.append({'invalid':0, 'category':category, 'item_url':shohin})
-                # cnt+=1
-                # if cnt==5:
-                #     break
-            
+                cnt+=1
+                if cnt==5:
+                    break
+
             # 商品情報取得
             get_item(driver, result_list)
-            
+
             # リーファ情報取得
             get_leafer(driver, result_list)
 
             # 利益計算を行う
             calc_profit(result_list)
- 
+
             # アマゾン出品許可チェック
             chek_approved(driver, result_list)
 
@@ -66,6 +67,7 @@ def task_yahoo_run():
             with open("C:\\serp\\files\\"+file_name, 'a', newline="", encoding='UTF-8') as f:
                 if is_first:
                     for result in result_list:
+
                         if result['invalid'] == 0:
                             fieldnames = result.keys()
                             writer     = csv.DictWriter(f, delimiter='\t', fieldnames=fieldnames)
@@ -195,7 +197,7 @@ def get_item(driver, result_list):
             # URLを開く
             # driver.switch_to.window(driver.window_handles[0])
             driver.get(result['item_url'])
-            time.sleep(0.5)
+            time.sleep(1)
 
             # jan_code
             jan_code=get_jan1()
