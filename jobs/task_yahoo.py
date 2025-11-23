@@ -47,9 +47,9 @@ def task_yahoo_run():
             cnt=0
             for shohin in shohin_list:
                 result_list.append({'invalid':0, 'category':category, 'item_url':shohin})
-                cnt+=1
-                if cnt==5:
-                    break
+                # cnt+=1
+                # if cnt==5:
+                #     break
 
             # 商品情報取得
             get_item(driver, result_list)
