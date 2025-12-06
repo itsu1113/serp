@@ -15,7 +15,7 @@ def task_yahoo_run():
     cate_list=get_cate_list()
 
     # 一覧のaタグのclass_name
-    class_name="SearchResultItemImageLink_SearchResultItemImageLink__link___1qiN"
+    class_name="ItemImageLink_SearchResultItemImageLink__8_m6n"
 
     fieldnames=[]
     is_first=True
@@ -34,7 +34,7 @@ def task_yahoo_run():
 
             # ページから商品urlを取得しshohin_listへ格納
             shohin_list = []
-            looplist_items = driver.find_elements(By.CLASS_NAME, 'SearchResult_SearchResultItem__mJ7vY') 
+            looplist_items = driver.find_elements(By.CLASS_NAME, class_name) 
             for l in looplist_items:
                 atags = l.find_elements(By.TAG_NAME, "a")
                 for atag in atags:
