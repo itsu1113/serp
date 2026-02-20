@@ -104,7 +104,7 @@ window.onload = function() {
 
 function get_point_per() {
   try {
-    point_per = document.querySelector('#rakutenLimitedId_cart > tbody > tr:nth-child(1) > div:nth-child(2) > div > div:nth-child(4) > div > div > ul.point-summary__campaign___14I4T.point-summary__multiplier-up___3wYrU.point-up > li:nth-child(2)').innerText.replace('倍UP', '');
+    point_per = document.querySelector('#rakutenLimitedId_cart > tbody > tr:nth-child(1) > div:nth-child(4) > div > div:nth-child(4) > div > div > ul.point-summary__campaign___14I4T.point-summary__multiplier-up___3wYrU.point-up > li:nth-child(2)').innerText.replace('倍UP', '');
     return point_per
   } catch(e) {
     try {
@@ -112,7 +112,7 @@ function get_point_per() {
       return point_per
     } catch(e) {
       try {
-        point_per = document.querySelector('#rakutenLimitedId_cart > tbody > tr:nth-child(1) > div:nth-child(2) > div > div:nth-child(4) > div > div > ul.point-summary__campaign___14I4T.point-summary__rebate___AO-bR.point-superdeal > li:nth-child(2)').innerText.replace('%ポイントバック', '');
+        point_per = document.querySelector('#rakutenLimitedId_cart > tbody > tr:nth-child(1) > div:nth-child(4) > div > div:nth-child(4) > div > div > ul.point-summary__campaign___14I4T.point-summary__rebate___AO-bR.point-superdeal > li:nth-child(2)').innerText.replace('%ポイントバック', '');
         point_per = parseInt(point_per)-1;
         return point_per
       } catch(e) {
